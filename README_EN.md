@@ -6,7 +6,11 @@
 
 [中文版](README.md) | English Version
 
-[Minivision](https://www.minivision.cn/)'s photo-to-cartoon translation project is opened source in this repo, you can try our WeChat mini program "AI Cartoon Show" via scanning the QR code above.
+[Minivision](https://www.minivision.cn/)'s photo-to-cartoon translation project is opened source in this repo, you can try our WeChat mini program "AI Cartoon Show" via scanning the QR code below.
+
+<div>
+  <img src='./images/QRcode.jpg' height='150px' width='150px'>
+</div>
 
 ## Introduce
 
