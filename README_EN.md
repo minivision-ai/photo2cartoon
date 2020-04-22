@@ -42,7 +42,7 @@ We also pre-process the data to a fixed pattern to help reduce the difficulty of
 ### Clone
 
 ```
-git clone https://github.com/minivision-ailab/photo2cartoon.git
+git clone https://github.com/minivision-ai/photo2cartoon.git
 cd ./photo2cartoon
 ```
 

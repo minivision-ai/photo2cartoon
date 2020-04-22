@@ -6,7 +6,7 @@
 
 **中文版** | [English Version](README_EN.md)
 
-该项目为[小视科技](https://www.minivision.cn/)卡通肖像探索项目。您可使用微信扫描下方二维码体验卡通化效果。
+该项目为[小视科技](https://www.minivision.cn/)卡通肖像探索项目。您可使用微信扫描下方二维码或搜索“AI卡通秀”小程序体验卡通化效果。
 
 <div>
   <img src='./images/QRcode.jpg' height='150px' width='150px'>
@@ -41,7 +41,7 @@ Unpaired image translation流派最经典方法是CycleGAN，但原始CycleGAN�
 
 ### Clone：
 ```
-git clone https://github.com/minivision-ailab/photo2cartoon.git
+git clone https://github.com/minivision-ai/photo2cartoon.git
 cd ./photo2cartoon
 ```
 
