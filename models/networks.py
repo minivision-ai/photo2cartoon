@@ -185,7 +185,8 @@ class HourGlass(nn.Module):
 
         if self.use_res:
             self.Conv2 = nn.Conv2d(dim_out, dim_out, kernel_size=1, stride=1)
-            self.Conv3 = nn.Conv2d(3, dim_out, kernel_size=1, stride=1)
+            
+        self.Conv3 = nn.Conv2d(3, dim_out, kernel_size=1, stride=1)
 
     def forward(self, x):
         ll = self.HG(x)
@@ -197,7 +198,8 @@ class HourGlass(nn.Module):
             return x + ll + tmp_out_
 
         else:
-            return tmp_out
+            tmp_out_ = self.Conv3(tmp_out)
+            return tmp_out_
 
 
 class HourGlassBlock(nn.Module):
