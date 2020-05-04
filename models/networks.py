@@ -225,17 +225,17 @@ class HourGlassBlock(nn.Module):
         down1 = F.avg_pool2d(x, 2)
         down1 = self.ConvBlock1_2(down1)
 
-        skip2 = self.ConvBlock1_1(down1)
+        skip2 = self.ConvBlock2_1(down1)
         down2 = F.avg_pool2d(down1, 2)
-        down2 = self.ConvBlock1_2(down2)
+        down2 = self.ConvBlock2_2(down2)
 
-        skip3 = self.ConvBlock1_1(down2)
+        skip3 = self.ConvBlock3_1(down2)
         down3 = F.avg_pool2d(down2, 2)
-        down3 = self.ConvBlock1_2(down3)
+        down3 = self.ConvBlock3_2(down3)
 
-        skip4 = self.ConvBlock1_1(down3)
+        skip4 = self.ConvBlock4_1(down3)
         down4 = F.avg_pool2d(down3, 2)
-        down4 = self.ConvBlock1_2(down4)
+        down4 = self.ConvBlock4_2(down4)
 
         center = self.ConvBlock5(down4)
 
