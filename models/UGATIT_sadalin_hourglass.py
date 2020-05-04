@@ -125,7 +125,7 @@ class UgatitSadalinHourglass(object):
             lr=self.lr, betas=(0.5, 0.999), weight_decay=0.0001
         )
 
-        """ Define Rho clipper to constraint the value of rho in AdaILN and ILN"""
+        """ Define Rho clipper to constraint the value of rho in AdaLIN and LIN"""
         self.Rho_clipper = RhoClipper(0, self.rho_clipper)
         self.W_Clipper = WClipper(0, self.w_clipper)
 
@@ -274,7 +274,7 @@ class UgatitSadalinHourglass(object):
             Generator_loss.backward()
             self.G_optim.step()
 
-            # clip parameter of Soft-AdaILN and ILN, applied after optimizer step
+            # clip parameter of Soft-AdaLIN and LIN, applied after optimizer step
             self.genA2B.apply(self.Rho_clipper)
             self.genB2A.apply(self.Rho_clipper)
             
