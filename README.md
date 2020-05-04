@@ -46,9 +46,9 @@ cd ./photo2cartoon
 ```
 
 ### 下载资源
-[谷歌网盘](https://drive.google.com/open?id=1eDNGZT3jszHLXQ9XGIUPtcu72HdBmHuX) | [百度网盘](https://pan.baidu.com/s/1DxWWBAoaBpsei_rynZUZzw) 提取码:z2nm
+[谷歌网盘](https://drive.google.com/open?id=1lsQS8hOCquMFKJFhK_z-n03ixWGkjT2P) | [百度网盘](https://pan.baidu.com/s/1MsT3-He3UGipKhUi4OcCJw) 提取码:y2ch
 
-1. 人像卡通化预训练模型：photo2cartoon_weights.pt，存放在`models`路径下。
+1. 人像卡通化预训练模型：photo2cartoon_weights.pt(20200502更新)，存放在`models`路径下。
 2. 头像分割模型：seg_model_384.pb，存放在`utils`路径下。
 3. 人脸识别预训练模型：model_mobilefacenet.pth，存放在`models`路径下。（From: [InsightFace_Pytorch](https://github.com/TreB1eN/InsightFace_Pytorch)）
 4. 卡通画开源数据：`cartoon_data`，包含`trainB`和`testB`。

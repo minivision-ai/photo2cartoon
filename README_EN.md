@@ -48,9 +48,9 @@ cd ./photo2cartoon
 
 ### Download
 
-[Google Drive](https://drive.google.com/open?id=1eDNGZT3jszHLXQ9XGIUPtcu72HdBmHuX) | [Baidu Cloud](https://pan.baidu.com/s/1DxWWBAoaBpsei_rynZUZzw) acess code: z2nm
+[Google Drive](https://drive.google.com/open?id=1lsQS8hOCquMFKJFhK_z-n03ixWGkjT2P) | [Baidu Cloud](https://pan.baidu.com/s/1MsT3-He3UGipKhUi4OcCJw) acess code: y2ch
 
-1. Put the pre-trained photo2cartoon model **photo2cartoon_weights.pt** into `models` folder.
+1. Put the pre-trained photo2cartoon model **photo2cartoon_weights.pt** into `models` folder (update on may 4, 2020).
 2. Place the head segmentation model **seg_model_384.pb** in `utils` folder. 
 3. Put the pre-trained face recognition model **model_mobilefacenet.pth** into `models` folder (From [InsightFace_Pytorch](https://github.com/TreB1eN/InsightFace_Pytorch)).
 4. Open-source cartoon dataset **`cartoon_data/`** contains `trainB` and `testB`.
