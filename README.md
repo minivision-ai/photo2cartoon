@@ -12,6 +12,8 @@
   <img src='./images/QRcode.jpg' height='150px' width='150px'>
 </div>
 
+也可以在该页面进行在线体验：[https://ai.minivision.cn/#/coreability/cartoon](https://ai.minivision.cn/#/coreability/cartoon)
+
 ## 简介
 人像卡通风格渲染的目标是，在保持原图像ID信息和纹理细节的同时，将真实照片转换为卡通风格的非真实感图像。我们的思路是，从大量照片/卡通数据中习得照片到卡通画的映射。一般而言，基于成对数据的pix2pix方法能达到较好的图像转换效果，但本任务的输入输出轮廓并非一一对应，例如卡通风格的眼睛更大、下巴更瘦；且成对的数据绘制难度大、成本较高，因此我们采用unpaired image translation方法来实现。
 
