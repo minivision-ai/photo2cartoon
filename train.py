@@ -31,7 +31,8 @@ def parse_args():
     parser.add_argument('--img_size', type=int, default=256, help='The size of image')
     parser.add_argument('--img_ch', type=int, default=3, help='The size of image channel')
 
-    parser.add_argument('--device', type=str, default='cuda:0', help='Set gpu mode: [cpu, cuda]')
+    # parser.add_argument('--device', type=str, default='cuda:0', help='Set gpu mode: [cpu, cuda]')
+    parser.add_argument('--gpu_ids', type=int, default=[0], nargs='+', help='Set [0, 1, 2, 3] for multi-gpu training')
     parser.add_argument('--benchmark_flag', type=str2bool, default=False)
     parser.add_argument('--resume', type=str2bool, default=False)
     parser.add_argument('--rho_clipper', type=float, default=1.0)

@@ -44,7 +44,8 @@ class UgatitSadalinHourglass(object):
         self.img_size = args.img_size
         self.img_ch = args.img_ch
 
-        self.device = args.device
+        self.device = f'cuda:{args.gpu_ids[0]}'
+        self.gpu_ids = args.gpu_ids
         self.benchmark_flag = args.benchmark_flag
         self.resume = args.resume
         self.rho_clipper = args.rho_clipper
@@ -154,6 +155,14 @@ class UgatitSadalinHourglass(object):
             self.disLB.load_state_dict(params['disLB'])
             print(" [*] Load {} Success".format(self.pretrained_weights))
 
+        if len(self.gpu_ids) > 1:
+            self.genA2B = nn.DataParallel(self.genA2B, device_ids=self.gpu_ids)
+            self.genB2A = nn.DataParallel(self.genB2A, device_ids=self.gpu_ids)
+            self.disGA = nn.DataParallel(self.disGA, device_ids=self.gpu_ids)
+            self.disGB = nn.DataParallel(self.disGB, device_ids=self.gpu_ids)
+            self.disLA = nn.DataParallel(self.disLA, device_ids=self.gpu_ids)
+            self.disLB = nn.DataParallel(self.disLB, device_ids=self.gpu_ids)
+            
         # training loop
         print('training start !')
         start_time = time.time()
@@ -257,6 +266,9 @@ class UgatitSadalinHourglass(object):
 
             G_id_loss_A = self.facenet.cosine_distance(real_A, fake_A2B)
             G_id_loss_B = self.facenet.cosine_distance(real_B, fake_B2A)
+            if len(self.gpu_ids) > 1:
+                G_id_loss_A = torch.mean(G_id_loss_A)
+                G_id_loss_B = torch.mean(G_id_loss_B)
 
             G_cam_loss_A = self.BCE_loss(fake_B2A_cam_logit, torch.ones_like(fake_B2A_cam_logit).to(self.device)) + \
                            self.BCE_loss(fake_A2A_cam_logit, torch.zeros_like(fake_A2A_cam_logit).to(self.device))
@@ -388,12 +400,22 @@ class UgatitSadalinHourglass(object):
 
     def save(self, dir, step):
         params = {}
-        params['genA2B'] = self.genA2B.state_dict()
-        params['genB2A'] = self.genB2A.state_dict()
-        params['disGA'] = self.disGA.state_dict()
-        params['disGB'] = self.disGB.state_dict()
-        params['disLA'] = self.disLA.state_dict()
-        params['disLB'] = self.disLB.state_dict()
+        
+        if len(self.gpu_ids) > 1:
+            params['genA2B'] = self.genA2B.module.state_dict()
+            params['genB2A'] = self.genB2A.module.state_dict()
+            params['disGA'] = self.disGA.module.state_dict()
+            params['disGB'] = self.disGB.module.state_dict()
+            params['disLA'] = self.disLA.module.state_dict()
+            params['disLB'] = self.disLB.module.state_dict()            
+        
+        else:
+            params['genA2B'] = self.genA2B.state_dict()
+            params['genB2A'] = self.genB2A.state_dict()
+            params['disGA'] = self.disGA.state_dict()
+            params['disGB'] = self.disGB.state_dict()
+            params['disLA'] = self.disLA.state_dict()
+            params['disLB'] = self.disLB.state_dict()
         torch.save(params, os.path.join(dir, self.dataset + '_params_%07d.pt' % step))
 
     def load(self, dir, step):

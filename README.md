@@ -115,6 +115,11 @@ python train.py --dataset photo2cartoon
 python train.py --dataset photo2cartoon --pretrained_weights models/photo2cartoon_weights.pt
 ```
 
+多GPU训练(仍建议使用batch_size=1，单卡训练):
+```
+python train.py --dataset photo2cartoon --batch_size 4 --gpu_ids 0 1 2 3
+```
+
 ## Q&A
 #### Q：为什么开源的卡通化模型与小程序中的效果有差异？
 

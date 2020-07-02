@@ -117,6 +117,11 @@ Load pre-trained weights:
 python train.py --dataset photo2cartoon --pretrained_weights models/photo2cartoon_weights.pt
 ```
 
+Train with Multi-GPU:
+```
+python train.py --dataset photo2cartoon --batch_size 4 --gpu_ids 0 1 2 3
+```
+
 ## Q&A
 #### Q：Why is the result of this project different from mini program?
 
