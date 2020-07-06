@@ -390,12 +390,22 @@ class UgatitSadalinHourglass(object):
 
             if step % 1000 == 0:
                 params = {}
-                params['genA2B'] = self.genA2B.state_dict()
-                params['genB2A'] = self.genB2A.state_dict()
-                params['disGA'] = self.disGA.state_dict()
-                params['disGB'] = self.disGB.state_dict()
-                params['disLA'] = self.disLA.state_dict()
-                params['disLB'] = self.disLB.state_dict()
+                
+                if len(self.gpu_ids) > 1:
+                    params['genA2B'] = self.genA2B.module.state_dict()
+                    params['genB2A'] = self.genB2A.module.state_dict()
+                    params['disGA'] = self.disGA.module.state_dict()
+                    params['disGB'] = self.disGB.module.state_dict()
+                    params['disLA'] = self.disLA.module.state_dict()
+                    params['disLB'] = self.disLB.module.state_dict()            
+                
+                else:
+                    params['genA2B'] = self.genA2B.state_dict()
+                    params['genB2A'] = self.genB2A.state_dict()
+                    params['disGA'] = self.disGA.state_dict()
+                    params['disGB'] = self.disGB.state_dict()
+                    params['disLA'] = self.disLA.state_dict()
+                    params['disLB'] = self.disLB.state_dict()
                 torch.save(params, os.path.join(self.result_dir, self.dataset + '_params_latest.pt'))
 
     def save(self, dir, step):
