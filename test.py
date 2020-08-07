@@ -1,4 +1,5 @@
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import cv2
 import torch
 import numpy as np
@@ -56,3 +57,4 @@ if __name__ == '__main__':
     cartoon = c2p.inference(img)
     if cartoon is not None:
         cv2.imwrite(args.save_path, cartoon)
+        print('photo save to ', args.save_path)

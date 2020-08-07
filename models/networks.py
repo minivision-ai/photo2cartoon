@@ -240,19 +240,19 @@ class HourGlassBlock(nn.Module):
         center = self.ConvBlock5(down4)
 
         up4 = self.ConvBlock6(center)
-        up4 = F.upsample(up4, scale_factor=2)
+        up4 = F.interpolate(up4, scale_factor=2)
         up4 = skip4 + up4
 
         up3 = self.ConvBlock7(up4)
-        up3 = F.upsample(up3, scale_factor=2)
+        up3 = F.interpolate(up3, scale_factor=2)
         up3 = skip3 + up3
 
         up2 = self.ConvBlock8(up3)
-        up2 = F.upsample(up2, scale_factor=2)
+        up2 = F.interpolate(up2, scale_factor=2)
         up2 = skip2 + up2
 
         up1 = self.ConvBlock9(up2)
-        up1 = F.upsample(up1, scale_factor=2)
+        up1 = F.interpolate(up1, scale_factor=2)
         up1 = skip1 + up1
 
         return up1
