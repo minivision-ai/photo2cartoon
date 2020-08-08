@@ -11,7 +11,7 @@ app = Flask(__name__)
 def toCartoon(base64_data):
     imgData = base64.b64decode(base64_data)
     nparr = np.fromstring(imgData, np.uint8)
-    img_np = cv2.imdecode(nparr, cv2.COLOR_BGR2RGB)
+    img_np = cv2.imdecode(nparr, cv2.COLOR_RGB2BGR)
     c2p = Photo2Cartoon()
     cartoon = c2p.inference(img_np)
     # print('cartoon', cartoon)
