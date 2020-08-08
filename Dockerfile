@@ -1,6 +1,6 @@
 FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-runtime
 FROM python:3.6
-FROM bakercp/docker-dl-dlib
+FROM dudaji/dlib
 WORKDIR /app
 
 COPY requirements.txt ./
