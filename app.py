@@ -5,20 +5,32 @@ from utils import Photo2Cartoon
 import cv2
 import numpy as np
 import base64
+
+# flask app
 app = Flask(__name__)
 
 
-def toCartoon(base64_data):
+# base64 转换为 cv2 数据
+def base64ToCV2(base64_data):
     imgData = base64.b64decode(base64_data)
     nparr = np.fromstring(imgData, np.uint8)
-    img_np = cv2.imdecode(nparr, cv2.COLOR_RGB2BGR)
+    img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    img_np = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
+    return img_np
+
+# cv2 转换为 base64 数据
+def cv2ToBase64(image):
+    cv_result = cv2.imencode('.png', image)[1]
+    base64_result = (str(base64.b64encode(cv_result))[2:-1])
+    return base64_result
+
+# 图片转换为卡通
+def toCartoon(base64_data):
+    cv2Data = base64ToCV2(base64_data)
     c2p = Photo2Cartoon()
-    cartoon = c2p.inference(img_np)
-    # print('cartoon', cartoon)
+    cartoon = c2p.inference(cv2Data)
     if cartoon is not None:
-        cv_result = cv2.imencode('.jpg', cartoon)[1]
-        # print('str(base64.b64encode(cv_result)', str(base64.b64encode(cv_result)))
-        base64_result = (str(base64.b64encode(cv_result))[2:-1])
+        base64_result = cv2ToBase64(cartoon)
         return {
             'data': {
                 'Image': base64_result
@@ -36,8 +48,12 @@ def toCartoon(base64_data):
             'message': ''
         }
 
-@app.route("/cartoon", methods=['GET', 'POST'])
+@app.route("/")
 def hello():
+    return 'use “/cartoon”'
+
+@app.route("/cartoon", methods=['GET', 'POST'])
+def cartoon():
     if request.method == 'POST':
         data = request.get_json()
         imageData = data['Image']
