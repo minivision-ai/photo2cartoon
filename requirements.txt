@@ -6,3 +6,7 @@ numpy==1.15.0
 scikit-image==0.17.2
 tensorflow==1.10.0
 tensorflow-cpu==1.15.0
+
+gunicorn
+gevent
+flask

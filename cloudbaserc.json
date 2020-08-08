@@ -1,0 +1,16 @@
+{
+  "envId": "env-jsdqwaon",
+  "framework": {
+    "name": "photho",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-container",
+        "inputs": {
+          "serviceName": "test-photo",
+          "servicePath": "/",
+          "localPath": "./"
+        }
+      }
+    }
+  }
+}
