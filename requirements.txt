@@ -1,6 +1,6 @@
 torch==1.4.0
 torchvision==0.5.0
-dlib==19.20.0
+dlib
 face-alignment==1.1.0
 numpy==1.15.0
 scikit-image==0.17.2
