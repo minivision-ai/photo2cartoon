@@ -13,7 +13,7 @@ parser.add_argument('--save_path', type=str, help='cartoon save path')
 args = parser.parse_args()
 
 os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
-
+assert os.path.exists('./models/photo2cartoon_weights.pt'), "Can not find 'photo2cartoon_weights.pt' in folder 'models'"
 
 class Photo2Cartoon:
     def __init__(self):
@@ -56,3 +56,4 @@ if __name__ == '__main__':
     cartoon = c2p.inference(img)
     if cartoon is not None:
         cv2.imwrite(args.save_path, cartoon)
+        print('Cartoon portrait has generated successfully!')
