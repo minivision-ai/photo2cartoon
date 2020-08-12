@@ -13,23 +13,26 @@ parser.add_argument('--save_path', type=str, help='cartoon save path')
 args = parser.parse_args()
 
 os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
-assert os.path.exists('./models/photo2cartoon_weights.pt'), "Can not find 'photo2cartoon_weights.pt' in folder 'models'"
 
 class Photo2Cartoon:
     def __init__(self):
         self.pre = Preprocess()
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.net = ResnetGenerator(ngf=32, img_size=256, light=True).to(self.device)
+        
+        assert os.path.exists('./models/photo2cartoon_weights.pt'), "[Step1: load weights] Can not find 'photo2cartoon_weights.pt' in folder 'models!!!'"
         params = torch.load('./models/photo2cartoon_weights.pt', map_location=self.device)
         self.net.load_state_dict(params['genA2B'])
+        print('[Step1: load weights] success!')
 
     def inference(self, img):
         # face alignment and segmentation
         face_rgba = self.pre.process(img)
         if face_rgba is None:
-            print('can not detect face!!!')
+            print('[Step2: face detect] can not detect face!!!')
             return None
-
+        
+        print('[Step2: face detect] success!')
         face_rgba = cv2.resize(face_rgba, (256, 256), interpolation=cv2.INTER_AREA)
         face = face_rgba[:, :, :3].copy()
         mask = face_rgba[:, :, 3][:, :, np.newaxis].copy() / 255.
@@ -47,6 +50,7 @@ class Photo2Cartoon:
         cartoon = (cartoon + 1) * 127.5
         cartoon = (cartoon * mask + 255 * (1 - mask)).astype(np.uint8)
         cartoon = cv2.cvtColor(cartoon, cv2.COLOR_RGB2BGR)
+        print('[Step3: face detect] success!')
         return cartoon
 
 
@@ -56,4 +60,4 @@ if __name__ == '__main__':
     cartoon = c2p.inference(img)
     if cartoon is not None:
         cv2.imwrite(args.save_path, cartoon)
-        print('Cartoon portrait has generated successfully!')
+        print('Cartoon portrait has been saved successfully!')
