@@ -50,7 +50,7 @@ class Photo2Cartoon:
         cartoon = (cartoon + 1) * 127.5
         cartoon = (cartoon * mask + 255 * (1 - mask)).astype(np.uint8)
         cartoon = cv2.cvtColor(cartoon, cv2.COLOR_RGB2BGR)
-        print('[Step3: face detect] success!')
+        print('[Step3: photo to cartoon] success!')
         return cartoon
 
 
