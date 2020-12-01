@@ -40,6 +40,7 @@ We also pre-process the data to a fixed pattern to help reduce the difficulty of
 - tensorflow-gpu 1.14
 - face-alignment
 - dlib
+- onnxruntime
 
 ### Clone
 
@@ -56,12 +57,18 @@ cd ./photo2cartoon
 2. Place the head segmentation model **seg_model_384.pb** in `utils` folder. 
 3. Put the pre-trained face recognition model **model_mobilefacenet.pth** into `models` folder (From [InsightFace_Pytorch](https://github.com/TreB1eN/InsightFace_Pytorch)).
 4. Open-source cartoon dataset **`cartoon_data/`** contains `trainB` and `testB`.
+5. Put the photo2cartoon onnx model **photo2cartoon_weights.onnx** [Google Drive](https://drive.google.com/file/d/1PhwKDUhiq8p-UqrfHCqj257QnqBWD523/view?usp=sharing) into `models` folder.
 
 ### Test
 
 Please use a young Asian woman photo.
 ```
 python test.py --photo_path ./images/photo_test.jpg --save_path ./images/cartoon_result.png
+```
+
+### Test onnx model
+```
+python test_onnx.py --photo_path ./images/photo_test.jpg --save_path ./images/cartoon_result.png
 ```
 
 ### Train

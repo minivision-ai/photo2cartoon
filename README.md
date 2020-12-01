@@ -42,6 +42,7 @@ Unpaired image translation流派最经典方法是CycleGAN，但原始CycleGAN�
 - tensorflow-gpu 1.14
 - face-alignment
 - dlib
+- onnxruntime
 
 ### Clone：
 ```
@@ -56,11 +57,17 @@ cd ./photo2cartoon
 2. 头像分割模型：seg_model_384.pb，存放在`utils`路径下。
 3. 人脸识别预训练模型：model_mobilefacenet.pth，存放在`models`路径下。（From: [InsightFace_Pytorch](https://github.com/TreB1eN/InsightFace_Pytorch)）
 4. 卡通画开源数据：`cartoon_data`，包含`trainB`和`testB`。
+5. 人像卡通化onnx模型：photo2cartoon_weights.onnx [谷歌网盘](https://drive.google.com/file/d/1PhwKDUhiq8p-UqrfHCqj257QnqBWD523/view?usp=sharing)，存放在`models`路径下。
 
 ### 测试
 将一张测试照片（亚洲年轻女性）转换为卡通风格：
 ```
 python test.py --photo_path ./images/photo_test.jpg --save_path ./images/cartoon_result.png
+```
+
+### 测试onnx模型
+```
+python test_onnx.py --photo_path ./images/photo_test.jpg --save_path ./images/cartoon_result.png
 ```
 
 ### 训练
