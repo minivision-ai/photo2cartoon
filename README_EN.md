@@ -14,6 +14,10 @@
 
 You can also try on this page: [https://ai.minivision.cn/#/coreability/cartoon](https://ai.minivision.cn/#/coreability/cartoon)
 
+**Updates**
+- `2020.12.2`: [photo2cartoon-paddle](https://github.com/minivision-ai/photo2cartoon-paddle) is released。
+- `2020.12.1`: Add onnx test model, see [test_onnx.py](./test_onnx.py) for details.
+
 ## Introduce
 
 The aim of portrait cartoon stylization is to transform real photos into cartoon images with portrait's ID information and texture details. We use Generative Adversarial Network method to realize the mapping of picture to cartoon. Considering the difficulty in obtaining paired data and the non-corresponding shape of input and output, we adopt unpaired image translation fashion.
