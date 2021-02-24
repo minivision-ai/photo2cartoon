@@ -150,7 +150,7 @@ A：实验中我们发现，使用自研的识别模型计算Face ID Loss训练�
 A：不能。该模型是针对本项目训练的专用模型，需先裁剪出人脸区域再输入。
 
 ## Tips
-我们开源的模型是基于亚洲年轻女性训练的，对于其他人群覆盖不足，您可根据使用场景自行收集相应人群的数据进行训练。我们的[开放平台](https://ai.minivision.cn/#/coreability/cartoon)提供了能够覆盖各类人群的卡通化服务，您可前往体验。
+我们开源的模型是基于亚洲年轻女性训练的，对于其他人群覆盖不足，您可根据使用场景自行收集相应人群的数据进行训练。我们的[开放平台](https://ai.minivision.cn/#/coreability/cartoon)提供了能够覆盖各类人群的卡通化服务，您可前往体验。如有定制卡通风格需求请联系商务:18852075216。
 
 ## 参考
 U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [[Paper](https://arxiv.org/abs/1907.10830)][[Code](https://github.com/znxlwm/UGATIT-pytorch)]
