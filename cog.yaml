@@ -5,41 +5,30 @@ environment:
     - "libgl1-mesa-glx"
     - "libglib2.0-0"
   python_packages:
+    - "cmake==3.21.1"
     - "torch==1.8.0"
     - "torchvision==0.9.0"
     - "numpy==1.19.2"
     - "ipython==7.21.0"
     - "opencv-python==4.3.0.38"
     - "face-alignment==1.3.4"
-    - "cmake==3.21.1"
-    - "dlib==19.22.0"
-    - "onnxruntime==1.8.1"
     - "tensorflow-gpu==2.5.0"
+#    - "dlib==19.22.0"
+
+#  CMake must be installed to build dlib, if put dlib in python_package seems not guaranteed that cmake installed first
+  pre_install:
+    - pip install dlib
 
 examples:
   - input:
-      image: "@test_imgs/1.jpg"
-      model: "Hayao"
+      photo: "@Brad_Pitt.jpg"
 
   - input:
-      image: "@test_imgs/1.jpg"
-      model: "Shinkai"
+      photo: "@emma-watson.jpeg"
 
   - input:
-      image: "@test_imgs/2.jpg"
-      model: "Hayao"
+      photo: "@zhao.jpeg"
 
-  - input:
-      image: "@test_imgs/2.jpg"
-      model: "Shinkai"
-
-  - input:
-      image: "@test_imgs/3.jpg"
-      model: "Hayao"
-
-  - input:
-      image: "@test_imgs/4.jpg"
-      model: "Hayao"
 
 
 
