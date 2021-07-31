@@ -1,0 +1,49 @@
+model: "cog_predict.py:Photo2CartoonModel"
+environment:
+  python_version: "3.8"
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "libglib2.0-0"
+  python_packages:
+    - "torch==1.8.0"
+    - "torchvision==0.9.0"
+    - "numpy==1.19.2"
+    - "ipython==7.21.0"
+    - "opencv-python==4.3.0.38"
+    - "face-alignment==1.3.4"
+    - "cmake==3.21.1"
+    - "dlib==19.22.0"
+    - "onnxruntime==1.8.1"
+    - "tensorflow-gpu==2.5.0"
+
+examples:
+  - input:
+      image: "@test_imgs/1.jpg"
+      model: "Hayao"
+
+  - input:
+      image: "@test_imgs/1.jpg"
+      model: "Shinkai"
+
+  - input:
+      image: "@test_imgs/2.jpg"
+      model: "Hayao"
+
+  - input:
+      image: "@test_imgs/2.jpg"
+      model: "Shinkai"
+
+  - input:
+      image: "@test_imgs/3.jpg"
+      model: "Hayao"
+
+  - input:
+      image: "@test_imgs/4.jpg"
+      model: "Hayao"
+
+
+
+
+
+
+
