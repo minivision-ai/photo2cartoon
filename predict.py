@@ -7,10 +7,9 @@ import os
 from pathlib import Path
 from utils import Preprocess
 from models import ResnetGenerator
-# from test_onnx import Photo2Cartoon as Onnx_Photo2Cartoon
 
 
-class Photo2CartoonModel(cog.Model):
+class Predictor(cog.Predictor):
     def setup(self):
         pass
 
