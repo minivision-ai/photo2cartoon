@@ -1,0 +1,27 @@
+predict: "predict.py:Predictor"
+build:
+  python_version: "3.8"
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "libglib2.0-0"
+  python_packages:
+    - "cmake==3.21.1"
+    - "torch==1.8.0"
+    - "torchvision==0.9.0"
+    - "numpy==1.19.2"
+    - "ipython==7.21.0"
+    - "opencv-python==4.3.0.38"
+    - "face-alignment==1.3.4"
+    - "tensorflow-gpu==2.5.0"
+  pre_install:
+    - pip install dlib
+
+
+
+
+
+
+
+
+
+
