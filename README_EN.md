@@ -150,6 +150,9 @@ A: We found that the experimental result calculated Face ID Loss by our internal
 #### Q：Can I use the segmentation model to predict half-length portrait?
 A：No. The model is trained for croped face specifically.
 
+## Third-party Resources 
+[MNN C++](https://github.com/DefTruth/lite.ai.toolkit/blob/main/lite/mnn/cv/mnn_female_photo2cartoon.cpp), [TNN C++](https://github.com/DefTruth/lite.ai.toolkit/blob/main/lite/tnn/cv/tnn_female_photo2cartoon.cpp) and [ONNXRuntime C++](https://github.com/DefTruth/lite.ai.toolkit/blob/main/lite/ort/cv/female_photo2cartoon.cpp) inference from [lite.ai.toolkit](https://github.com/DefTruth/lite.ai.toolkit). 
+
 ## Reference
 
 U-GAT-IT: Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation [[Paper](https://arxiv.org/abs/1907.10830)][[Code](https://github.com/znxlwm/UGATIT-pytorch)]
